@@ -13,27 +13,25 @@
       </tr>
       <tr>
         <th scope="row">Jelenlegi licit:</th>
-        <td>TODO</td>
+        <td>{{ticket.currentBid}}</td>
       </tr>
       <tr>
         <th scope="row">Licitek száma:</th>
-        <td>TODO</td>
+        <td>{{ticket.bidCounter}}</td>
       </tr>
       <tr>
         <th scope="row">Licit lépcső:</th>
         <td>{{ticket.bidStep}}</td>
       </tr>
       <tr>
-        <td colspan="2">Licit lejár <strong>X</strong> nap múlva</td>
+        <td colspan="2">Licit lejár <strong>
+          {{ticket.bidEndDate | amFromUnix | amTimeAgo }}</strong></td>
       </tr>
 
       </tbody>
     </table>
 
-    <div class="row">
-      <div class="col-12">
-        <a class="btn btn-primary text-light ml-lg-2">Licit a lépcső szerint</a>
-      </div>
-    </div>
+    <app-ticket-bid-form [ticket]="ticket" (BidWithStep)="onBidWithStep()"></app-ticket-bid-form>
+
   </div>
 </div>

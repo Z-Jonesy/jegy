@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TicketModel} from '../../shared/ticket-model';
 
 @Component({
@@ -8,4 +8,9 @@ import {TicketModel} from '../../shared/ticket-model';
 })
 export class BiddingCardComponent {
   @Input() ticket: TicketModel;
+
+
+  onBidWithStep() {
+    alert('licit következő értékkel');
+  }
 }
