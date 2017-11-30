@@ -31,7 +31,7 @@
       </tbody>
     </table>
 
-    <app-ticket-bid-form [ticket]="ticket" (BidWithStep)="onBidWithStep()"></app-ticket-bid-form>
+    <app-ticket-bid-form *ngIf="isLoggedIn" [ticket]="ticket" (bid)="onBidWithStep()"></app-ticket-bid-form>
 
   </div>
 </div>

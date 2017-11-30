@@ -14,6 +14,7 @@ import {EventService} from './event.service';
 import {TicketModel} from './ticket-model';
 import {UserModel} from './user-model';
 import {UserService} from './user.service';
+import 'rxjs/add/operator/mergeMap';
 
 @Injectable()
 export class TicketService {
@@ -81,7 +82,7 @@ export class TicketService {
       ;
   }
 
-  getOne(id: string): Observable<TicketModel> {
+  getOne(id: string | null): Observable<TicketModel> {
     return this._http.get<TicketModel>(`${environment.firebase.baseUrl}/tickets/${id}.json`)
       .flatMap(
         ticket => {
@@ -108,5 +109,10 @@ export class TicketService {
       {id: ticketId}
     )
       .map(x => x.id);
+  }
+
+  modify(ticket: TicketModel) {
+    return this._http
+      .put(`${environment.firebase.baseUrl}/tickets/${ticket.id}.json`, ticket);
   }
 }
