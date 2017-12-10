@@ -14,6 +14,7 @@ export class TicketModel {
   bidCounter: number;
   bidEndDate: number;
   details: string;
+  date: string;
 
   constructor(param?: TicketModel) {
     Object.assign(this, param);
