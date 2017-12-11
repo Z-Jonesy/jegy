@@ -16,7 +16,7 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class UserService {
-  isLoggedin = ReplaySubject(1);
+  isLoggedin = new ReplaySubject(1);
 
   private _user = new UserModel();
   private _fbAuthData: FirebaseLoginModel | FirebaseRegistrationModel | undefined;
