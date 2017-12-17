@@ -82,7 +82,7 @@ export class TicketService {
       ;
   }
 
-  getOne(id: string | null): Observable<TicketModel> {
+  getOne(id: string): Observable<TicketModel> {
     return this._http.get<TicketModel>(`${environment.firebase.baseUrl}/tickets/${id}.json`)
       .flatMap(
         ticket => {
@@ -91,6 +91,7 @@ export class TicketService {
             this._eventService.getEventById(ticket.eventId),
             this._userService.getUserById(ticket.sellerUserId),
             (t: TicketModel, e: EventModel, u: UserModel) => {
+              t.setEvent(e)
               return {
                 ...t,
                 event: e,
@@ -103,16 +104,16 @@ export class TicketService {
 
   }
 
+  modify(ticket: TicketModel) {
+    return this._http
+      .put(`${environment.firebase.baseUrl}/tickets/${ticket.id}.json`, ticket);
+  }
+
   private _saveGeneratedId(ticketId: string): Observable<string> {
     return this._http.patch<{ id: string }>(
       `${environment.firebase.baseUrl}/tickets/${ticketId}.json`,
       {id: ticketId}
     )
       .map(x => x.id);
-  }
-
-  modify(ticket: TicketModel) {
-    return this._http
-      .put(`${environment.firebase.baseUrl}/tickets/${ticket.id}.json`, ticket);
   }
 }

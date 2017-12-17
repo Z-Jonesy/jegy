@@ -19,4 +19,13 @@ export class TicketModel {
   constructor(param?: TicketModel) {
     Object.assign(this, param);
   }
+
+  setEvent(event: EventModel) {
+    delete this.event;
+    this.event = event;
+    const eventPropertyDescriptor = Object.getOwnPropertyDescriptor(this, 'event');
+    eventPropertyDescriptor.enumerable = false;
+    Object.defineProperty(this, 'event', eventPropertyDescriptor);
+  }
+
 }

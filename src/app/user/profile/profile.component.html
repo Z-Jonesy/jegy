@@ -10,6 +10,7 @@
         </div>
       </div>
 
+      <ng-container *ngIf="user$ | async as user; else loading" >
       <div class="row justify-content-center bg-light m-0">
         <img class="profil my-3 border" [src]="user.profilePictureUrl"
              alt="Card image cap"></div>
@@ -39,6 +40,10 @@
           </tbody>
         </table>
       </div>
+      </ng-container>
+      <ng-template #loading>
+        <app-loading-spinner></app-loading-spinner>
+      </ng-template>
 
       <div class="text-center mb-3">
         <a routerLink="./edit" class="btn btn-primary text-light ml-lg-2">

@@ -1,9 +1,10 @@
-///<reference path="../../../../node_modules/@angular/router/src/shared.d.ts"/>
+///<reference path='../../../../node_modules/@angular/router/src/shared.d.ts'/>
 import {Component, OnInit} from '@angular/core';
 import {TicketService} from '../../shared/ticket.service';
 import {TicketModel} from '../../shared/ticket-model';
 import {UserService} from '../../shared/user.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-bid',
@@ -12,14 +13,21 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 })
 export class BidComponent implements OnInit {
   ticket: TicketModel;
-  isLoggedIn: boolean;
+  isLoggedIn$: Observable<boolean>;
   progressRefreshTicket = false;
 
   constructor(private ticketService: TicketService,
               private userService: UserService,
               private route: ActivatedRoute,
               private router: Router) {
-    this.isLoggedIn = true; // userService.isLoggedin;
+
+    this.isLoggedIn$ = userService.isLoggedIn$;
+
+    // this.userService.isLoggedIn$.subscribe(
+    //   isLoggedIn => this.isLoggedIn = this.isLoggedIn
+    // );
+
+    // this.isLoggedIn = true; // userService.isLoggedin$;
   }
 
   ngOnInit() {
