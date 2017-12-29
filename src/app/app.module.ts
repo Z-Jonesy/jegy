@@ -1,4 +1,5 @@
-import { HttpClientModule} from '@angular/common/http';
+///<reference path="core/nav-bar-item/nav-bar-item.component.ts"/>
+import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -22,12 +23,14 @@ import {TicketBidFormComponent} from './ticket/ticket-bid-form/ticket-bid-form.c
 import {LoadingSpinnerComponent} from './core/loading-spinner/loading-spinner.component';
 import {BidService} from './shared/bid.service';
 import * as firebase from 'firebase';
-import {environment} from "../environments/environment";
+import {environment} from '../environments/environment';
+import {NavBarItemComponent} from './core/nav-bar-item/nav-bar-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    NavBarItemComponent,
     JumbotronComponent,
     EventcardComponent,
     FooterComponent,
@@ -35,7 +38,7 @@ import {environment} from "../environments/environment";
     TicketDetailsCardComponent,
     BiddingCardComponent,
     TicketBidFormComponent,
-    LoadingSpinnerComponent,
+    LoadingSpinnerComponent
 
   ],
   imports: [
