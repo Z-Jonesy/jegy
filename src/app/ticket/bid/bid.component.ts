@@ -1,5 +1,5 @@
 ///<reference path='../../../../node_modules/@angular/router/src/shared.d.ts'/>
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {TicketService} from '../../shared/ticket.service';
 import {TicketModel} from '../../shared/ticket-model';
 import {UserService} from '../../shared/user.service';
@@ -9,7 +9,8 @@ import {Observable} from "rxjs/Observable";
 @Component({
   selector: 'app-bid',
   templateUrl: './bid.component.html',
-  styleUrls: ['./bid.component.css']
+  styleUrls: ['./bid.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BidComponent implements OnInit {
   ticket: TicketModel;

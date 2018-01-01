@@ -1,6 +1,6 @@
 ///<reference path="bid.validators.ts"/>
 ///<reference path="../../../../node_modules/@angular/core/src/metadata/lifecycle_hooks.d.ts"/>
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {TicketModel} from '../../shared/ticket-model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BidService} from '../../shared/bid.service';
@@ -10,7 +10,8 @@ import {bidMinimumValidator} from './bid.validators';
 @Component({
   selector: 'app-ticket-bid-form',
   templateUrl: './ticket-bid-form.component.html',
-  styleUrls: ['./ticket-bid-form.component.css']
+  styleUrls: ['./ticket-bid-form.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class TicketBidFormComponent implements OnInit, OnChanges {

@@ -25,18 +25,18 @@ export class NavbarComponent implements OnInit, DoCheck, AfterViewChecked, After
   }
 
   ngDoCheck(): void {
-    console.log('NavbarComponent ngDoCheck');
+    //console.log('NavbarComponent ngDoCheck');
   }
 
   ngAfterViewChecked(): void {
-    console.log('NavbarComponent AfterViewChecked');
+    //console.log('NavbarComponent AfterViewChecked');
   }
 
   ngOnInit() {
   }
 
   logout() {
-    this.userService.logout();
+    //this.userService.logout();
   }
 
 }
